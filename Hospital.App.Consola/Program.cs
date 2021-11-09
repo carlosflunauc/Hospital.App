@@ -14,15 +14,17 @@ namespace Hospital.App.Consola
 
             //AddPaciente();
             MostrarPacientes();
+            //BuscarPaciente(2);
+            //EliminarPaciente(1);
         }
         private static void AddPaciente()
         {
             var paciente = new Paciente
             {
-                Nombre = "Pepito",
-                Apellidos = "Perez",
+                Nombre = "Antonio",
+                Apellidos = "Luna",
                 NumeroTelefono = "6068848",
-                Genero = Genero.Otro,
+                Genero = Genero.Pansexual,
                 Direccion = "Calle 4 No 6-9",
                 Ciudad = "Manizales",
                 FechaNacimiento = new DateTime(1985,05,19)
@@ -34,8 +36,18 @@ namespace Hospital.App.Consola
             IEnumerable<Paciente> pacientes = _repoPaciente.GetAllPacientes();
             foreach (var paciente in pacientes)
             {
-                Console.WriteLine(paciente.Nombre+" "+paciente.Apellidos);
+                Console.WriteLine(paciente.Id+" "+paciente.Nombre+" "+paciente.Apellidos+" "+paciente.Genero);
             }
+        }
+        private static void BuscarPaciente(int idPaciente)
+        {
+            var paciente =_repoPaciente.GetPaciente(idPaciente);
+            Console.WriteLine(paciente.Id+" "+paciente.Nombre+" "+paciente.Apellidos+" "+paciente.Genero);
+        }
+        private static void EliminarPaciente(int idPaciente)
+        {
+            _repoPaciente.DeletePaciente(idPaciente);
+            Console.WriteLine("Paciente Eliminado");
         }
     }
 }

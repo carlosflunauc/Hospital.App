@@ -5,7 +5,9 @@ namespace Hospital.App.Persistencia
 {
     public interface IRepositorioPaciente
     {
-         Paciente AddPaciente(Paciente paciente);
-         IEnumerable<Paciente> GetAllPacientes();
+        IEnumerable<Paciente> GetAllPacientes(); 
+        Paciente AddPaciente(Paciente paciente);
+        Paciente GetPaciente(int idPaciente);
+        void DeletePaciente(int idPaciente);
     }
 }

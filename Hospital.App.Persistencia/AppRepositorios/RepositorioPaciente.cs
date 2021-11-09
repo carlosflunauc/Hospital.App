@@ -19,5 +19,23 @@ namespace Hospital.App.Persistencia
         {
             return _appContext.Pacientes;
         }
+        Paciente IRepositorioPaciente.GetPaciente(int idPaciente)
+        {
+            return _appContext.Pacientes.Find(idPaciente);
+            /*
+            var pac = _appContext.Pacientes
+                        .Where(pac => pac.Id == idPaciente)
+                        .FirstOrDefault();
+            return pac;
+            */
+        }
+        void IRepositorioPaciente.DeletePaciente(int idPaciente)
+        {
+            var pacienteEncontrado = _appContext.Pacientes.Find(idPaciente);
+            if(pacienteEncontrado == null)
+                return;
+            _appContext.Pacientes.Remove(pacienteEncontrado);
+            _appContext.SaveChanges();
+        }
     }
 }
