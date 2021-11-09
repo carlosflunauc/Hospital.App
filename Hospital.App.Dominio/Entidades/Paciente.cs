@@ -10,6 +10,7 @@ namespace Hospital.App.Dominio
         public string Departamento {get; set;}
         public DateTime FechaNacimiento {get; set;}
         public Medico Medico {get; set;}
+        public Enfermera Enfermera {get; set;}
         public List<SignoVital> SignosVitales {get; set;}
     }
 }
